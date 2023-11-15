@@ -11,11 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certification', function (Blueprint $table) {
+        Schema::create('incident', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->date('date_obtention')
-            ->nullable();
+            $table->timestamp('date_heure')
+                ->nullable();
+            $table
+            ->foreignId('id_type')
+            ->references('id')
+            ->on('type_incident')
+            ->cascadeOnUpdate()
+            ->constrained()
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -25,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('certification');
+        Schema::dropIfExists('incident');
     }
 };

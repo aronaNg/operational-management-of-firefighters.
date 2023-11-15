@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certification', function (Blueprint $table) {
+        Schema::create('disponibilite', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->date('date_obtention')
+            $table->time('horaire_debut')
+            ->nullable();
+            $table->time('horaire_fin')
             ->nullable();
             $table->timestamps();
         });
@@ -25,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('certification');
+        Schema::dropIfExists('disponibilite');
     }
 };
