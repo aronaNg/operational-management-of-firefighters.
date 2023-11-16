@@ -11,19 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('vehicule', function (Blueprint $table) {
+        Schema::create('equipement', function (Blueprint $table) {
             $table->id();
-            $table->string('immatriculation');
             $table->boolean('disponible')
             ->default(true);
+            $table->foreignId('id_type_equipement')
+                ->references('id')
+                ->on('type_equipement')
+                ->cascadeOnUpdate()
+                ->constrained()
+                ->onDelete('cascade');
             $table->date('date_achat')
             ->nullable();
-            $table->foreignId('id_type')
-            ->references('id')
-            ->on('type_vehicule')
-            ->cascadeOnUpdate()
-            ->constrained()
-            ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('vehicule');
+        Schema::dropIfExists('equipement');
     }
 };

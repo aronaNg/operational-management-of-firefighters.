@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamp('date_heure')
                 ->nullable();
             $table
-            ->foreignId('id_type')
+            ->foreignId('id_type_incident')
             ->references('id')
             ->on('type_incident')
             ->cascadeOnUpdate()

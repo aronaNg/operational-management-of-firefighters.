@@ -11,18 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('intervention', function (Blueprint $table) {
+        Schema::create('vehicule', function (Blueprint $table) {
             $table->id();
-            $table->enum('statut', ['nouvelle', 'en cours','terminee'])
-                ->default('nouvelle');
-            $table->timestamp('date_heure')
-                ->nullable();
-            $table
-            ->foreignId('id_incident')
+            $table->string('immatriculation');
+            $table->boolean('disponible')
+            ->default(true);
+            $table->date('date_achat')
+            ->nullable();
+            $table->foreignId('id_type_vehicule')
             ->references('id')
-            ->on('incident')
+            ->on('type_vehicule')
             ->cascadeOnUpdate()
-            ->constrained()
             ->onDelete('cascade');
             $table->timestamps();
         });
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('intervention');
+        Schema::dropIfExists('vehicule');
     }
 };

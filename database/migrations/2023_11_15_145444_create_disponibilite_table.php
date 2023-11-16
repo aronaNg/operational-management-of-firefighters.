@@ -17,6 +17,11 @@ return new class extends Migration
             ->nullable();
             $table->time('horaire_fin')
             ->nullable();
+            $table
+            ->foreignId('id_pompier')
+            ->references('id')
+            ->on('pompier')
+            ->constrained();
             $table->timestamps();
         });
     }
