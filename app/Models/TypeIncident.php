@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TypeIncident extends Model
 {
     use HasFactory;
+    protected $fillable = ['intitule'];
+
 }

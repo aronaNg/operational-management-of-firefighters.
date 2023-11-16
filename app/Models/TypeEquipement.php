@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class TypeEquipement extends Model
 {
     use HasFactory;
+    protected $fillable = ['intitule'];
+
 }
