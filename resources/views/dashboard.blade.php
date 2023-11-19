@@ -12,6 +12,9 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
+            <a href="{{route('admin')}}" class="btn btn-danger">Annuler</a>
+
         </div>
+
     </div>
 </x-app-layout>

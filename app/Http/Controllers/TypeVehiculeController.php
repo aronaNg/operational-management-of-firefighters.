@@ -1,65 +1,63 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\TypeVehicule;
 use Illuminate\Http\Request;
 
 class TypeVehiculeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        // Code pour afficher la page d'accueil
+        $typeVehicules = TypeVehicule::orderBy("intitule","asc")->paginate(5);
+        return view("typeVehicule.index", compact("typeVehicules"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    //création de de type
     public function create()
     {
-        //
+        return view("typeVehicule.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // Valider les données envoyées par le formulaire
+        $validatedData = $request->validate([
+            'intitule' => 'required|unique:typeVehicule,intitule', // Le intitule est requis et doit être unique dans la table 'typeVehicule'
+        ]);
+
+        // Créer un nouveau type à partir des données validées
+        TypeVehicule::create($validatedData);
+
+        // Rediriger l'utilisateur vers la page des typeVehicule avec un message de succès
+        return redirect()->route('admin')->with("success", "Le bien a été créé avec succès !");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(TypeVehicule $typeVehicule)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+      //édition de bien
     public function edit(TypeVehicule $typeVehicule)
     {
-        //
+        return view("typeVehicule.edit",compact("typeVehicule"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, TypeVehicule $typeVehicule)
     {
-        //
+        $typeVehiculeEdit=$typeVehicule->intitule;
+        $validatedData = $request->validate([
+            'intitule' => 'required|unique:typeVehicule,intitule',
+        ]);
+
+        $typeVehicule->update($validatedData);
+
+        return redirect()->route('admin')->with("success", "Le typeVehicule  $typeVehiculeEdit a été modifié avec succès !");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(TypeVehicule $typeVehicule)
+    //suppression de typeVehicule
+    //injection de dépendance
+      public function delete(TypeVehicule $typeVehicule)
     {
-        //
+        $typeVehiculeSupp=$typeVehicule->intitule;
+        $typeVehicule->delete();
+        return redirect()->route('admin')->with("message", "Le vehicule $typeVehiculeSupp a été supprimé avec succès !");
     }
+
 }

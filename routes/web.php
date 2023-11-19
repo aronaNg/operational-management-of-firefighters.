@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TypeVehiculeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,20 @@ Route::get('/', function () {
     return view('welcome');
 })->name("accueil");
 
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/dashboard/admin', [TypeVehiculeController::class, 'index'])->name("admin");
+Route::get('/dashboard/admin/create', [TypeVehiculeController::class, 'create'])->name("admin.create");
+Route::post('/dashboard/admin/create', [TypeVehiculeController::class, 'store'])->name("admin.store");
+
+//route pour l'édition
+Route::get('/dashboard/admin/{typeVehicule}', [TypeVehiculeController::class, 'edit'])->name("admin.edit");
+Route::put('/dashboard/admin/{typeVehicule}', [TypeVehiculeController::class, 'update'])->name("admin.update");
+//route pour la suppression
+Route::delete('/admin/{typeVehicule}', [TypeVehiculeController::class, 'delete'])->name("admin.delete");
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

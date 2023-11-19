@@ -74,6 +74,10 @@
 
         <main class="py-4">
             @yield('content')
+            <div class="container">
+                <a href="{{route('admin')}}" class="btn btn-success">Allez chez admin</a>
+            </div>
+
         </main>
     </div>
 </body>
