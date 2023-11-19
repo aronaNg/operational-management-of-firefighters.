@@ -18,7 +18,7 @@ return new class extends Migration
             $table
             ->foreignId('id_type_incident')
             ->references('id')
-            ->on('type_incident')
+            ->on('type_incidents')
             ->cascadeOnUpdate()
             ->constrained()
             ->onDelete('cascade');

@@ -41,6 +41,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
+
                             @endif
 
                             @if (Route::has('register'))
@@ -49,9 +50,19 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item"
+                        >
+                        <a href="#" class="nav-link">Gestion pompiers</a></li>
+                        <li class="nav-item"
+                        >
+                        <a href="{{route('admin')}}" class="nav-link">Gestion véhicules</a></li>
+                        <li class="nav-item"
+                        >
+                        <a href="#" class="nav-link">Gestion équipements</a></li>
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    <strong>{{ Auth::user()->name }}</strong>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -66,6 +77,7 @@
                                     </form>
                                 </div>
                             </li>
+
                         @endguest
                     </ul>
                 </div>
@@ -74,9 +86,9 @@
 
         <main class="py-4">
             @yield('content')
-            <div class="container">
+            {{-- <div class="container">
                 <a href="{{route('admin')}}" class="btn btn-success">Allez chez admin</a>
-            </div>
+            </div> --}}
 
         </main>
     </div>
