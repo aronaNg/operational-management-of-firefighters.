@@ -23,7 +23,7 @@ class TypeVehiculeController extends Controller
     {
         // Valider les données envoyées par le formulaire
         $validatedData = $request->validate([
-            'intitule' => 'required|unique:typeVehicule,intitule', // Le intitule est requis et doit être unique dans la table 'typeVehicule'
+            'intitule' => 'required|unique:type_vehicules,intitule', // L'intitule est requis et doit être unique dans la table 'typeVehicule'
         ]);
 
         // Créer un nouveau type à partir des données validées
@@ -43,7 +43,7 @@ class TypeVehiculeController extends Controller
     {
         $typeVehiculeEdit=$typeVehicule->intitule;
         $validatedData = $request->validate([
-            'intitule' => 'required|unique:typeVehicule,intitule',
+            'intitule' => 'required|unique:type_vehicules,intitule',
         ]);
 
         $typeVehicule->update($validatedData);
