@@ -6,7 +6,7 @@ git clone https://github.com/aronaNg/operational-management-of-firefighters.git
 
 composer install
 
-Config database in .env file
+Congfig database in .env file
 
 Migration: php artisan migrate
 
