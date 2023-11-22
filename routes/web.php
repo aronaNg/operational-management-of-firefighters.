@@ -5,7 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeVehiculeController;
 use App\Http\Controllers\TypeIncidentController;
 use App\Http\Controllers\TypeEquipementController;
-
+use App\Http\Controllers\VehiculeController;
+use App\Http\Controllers\IncidentController;
+use App\Http\Controllers\InterventionController;
+use App\Http\Controllers\FormationController;
+use App\Http\Controllers\CertificatController;
+use App\Http\Controllers\PompierController;
 
 /*
 |--------------------------------------------------------------------------

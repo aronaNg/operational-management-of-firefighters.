@@ -13,6 +13,6 @@ class TypeEquipementSeeder extends Seeder
     public function run(): void
     {
         //
-        \App\Models\TypeEquipement::factory(20)->create();
+        \App\Models\TypeEquipement::factory(22)->create();
     }
 }
