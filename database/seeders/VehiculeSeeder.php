@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class TypeEquipementSeeder extends Seeder
+class VehiculeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class TypeEquipementSeeder extends Seeder
     public function run(): void
     {
         //
-        \App\Models\TypeEquipement::factory(20)->create();
+        \App\Models\Vehicule::factory(20)->create();
     }
 }

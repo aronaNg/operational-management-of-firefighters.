@@ -26,7 +26,7 @@
                 <a href="{{route('admin.create')}}" class="btn btn-success mb-4">Créer un type de véhicule</a>
             </div>
             <div class="d-flex justify-content-start">
-                <a href="" class="btn btn-success mb-4">Voir les véhicules</a>
+                <a href="{{route('admin.vehicule')}}" class="btn btn-success mb-4">Voir les véhicules</a>
             </div>
           </div>
             <table class="table table-striped table-hover table-bordered"">

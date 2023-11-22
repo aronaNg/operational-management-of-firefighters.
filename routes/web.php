@@ -31,16 +31,16 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-// VEHICULES
-Route::get('/dashboard/vehicules', [TypeVehiculeController::class, 'index'])->middleware(['auth', 'verified'])->name("admin");
-Route::get('/dashboard/vehicule/create', [TypeVehiculeController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.create");
-Route::post('/dashboard/vehicule/create', [TypeVehiculeController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.store");
+// Type VEHICULES
+Route::get('/dashboard/typeVehicules', [TypeVehiculeController::class, 'index'])->middleware(['auth', 'verified'])->name("admin");
+Route::get('/dashboard/typeVehicule/create', [TypeVehiculeController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.create");
+Route::post('/dashboard/typeVehicule/create', [TypeVehiculeController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.store");
 
 //route pour l'édition
-Route::get('/dashboard/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.edit");
-Route::put('/dashboard/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.update");
+Route::get('/dashboard/typeVehicule/{typeVehicule}', [TypeVehiculeController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.edit");
+Route::put('/dashboard/typeVehicule/{typeVehicule}', [TypeVehiculeController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.update");
 //route pour la suppression
-Route::delete('/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.delete");
+Route::delete('/typeVehicule/{typeVehicule}', [TypeVehiculeController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.delete");
 
 // INCIDENTS
 
@@ -58,6 +58,14 @@ Route::post('/dashboard/equipements/create', [TypeEquipementController::class, '
 Route::get('/dashboard/equipements/{typeEquipement}', [TypeEquipementController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.equipement.edit");
 Route::put('/dashboard/equipements/{typeEquipement}', [TypeEquipementController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.equipement.update");
 Route::delete('/equipements/{typeEquipement}', [TypeEquipementController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.equipement.delete");
+
+// VEHICULES
+Route::get('/dashboard/vehicules', [TypeVehiculeController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.vehicule");
+Route::get('/dashboard/vehicule/create', [TypeVehiculeController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.vehicule.create");
+Route::post('/dashboard/vehicule/create', [TypeVehiculeController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.vehicule.store");
+Route::get('/dashboard/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.vehicule.edit");
+Route::put('/dashboard/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.vehicule.update");
+Route::delete('/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.vehicule.delete");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
