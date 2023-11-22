@@ -31,7 +31,7 @@ class TypeEquipementController extends Controller
         TypeEquipement::create($validatedData);
 
         // Rediriger l'utilisateur vers la page des typeEquipement avec un message de succès
-        return redirect()->route('admin')->with("success", "Le bien a été créé avec succès !");
+        return redirect()->route('admin.equipement')->with("success", "Le bien a été créé avec succès !");
     }
 
       //édition de bien
@@ -44,12 +44,12 @@ class TypeEquipementController extends Controller
     {
         $typeEquipementEdit=$typeEquipement->intitule;
         $validatedData = $request->validate([
-            'intitule' => 'required|unique:type_Equipements,intitule',
+            'intitule' => 'required|unique:type_equipements,intitule',
         ]);
 
         $typeEquipement->update($validatedData);
 
-        return redirect()->route('admin')->with("success", "Le typeEquipement  $typeEquipementEdit a été modifié avec succès !");
+        return redirect()->route('admin.equipement')->with("success", "Le typeEquipement  $typeEquipementEdit a été modifié avec succès !");
     }
 
     //suppression de typeEquipement
@@ -58,7 +58,7 @@ class TypeEquipementController extends Controller
     {
         $typeEquipementSupp=$typeEquipement->intitule;
         $typeEquipement->delete();
-        return redirect()->route('admin')->with("message", "Le vehicule $typeVehiculeSupp a été supprimé avec succès !");
+        return redirect()->route('admin.equipement')->with("message", "L'équipement $typeEquipementSupp a été supprimé avec succès !");
     }
 
 }

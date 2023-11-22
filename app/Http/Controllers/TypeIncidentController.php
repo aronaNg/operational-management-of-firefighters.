@@ -31,7 +31,7 @@ class TypeIncidentController extends Controller
         TypeIncident::create($validatedData);
 
         // Rediriger l'utilisateur vers la page des typeIncident avec un message de succès
-        return redirect()->route('admin')->with("success", "Le bien a été créé avec succès !");
+        return redirect()->route('admin.incident')->with("success", "Le bien a été créé avec succès !");
     }
 
       //édition de bien
@@ -49,7 +49,7 @@ class TypeIncidentController extends Controller
 
         $typeIncident->update($validatedData);
 
-        return redirect()->route('admin')->with("success", "Le typeIncident  $typeIncidentEdit a été modifié avec succès !");
+        return redirect()->route('admin.incident')->with("success", "Le type $typeIncidentEdit a été modifié avec succès !");
     }
 
     //suppression de typeIncident
@@ -58,7 +58,7 @@ class TypeIncidentController extends Controller
     {
         $typeIncidentSupp=$typeIncident->intitule;
         $typeIncident->delete();
-        return redirect()->route('admin')->with("message", "Le vehicule $typeVehiculeSupp a été supprimé avec succès !");
+        return redirect()->route('admin.incident')->with("message", "Le type $typeIncidentSupp a été supprimé avec succès !");
     }
 
 }

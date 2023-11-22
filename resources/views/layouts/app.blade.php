@@ -62,7 +62,7 @@
 
                         <li class="nav-item"
                         >
-                        <a href="#" class="nav-link">Gestion équipements</a></li>
+                        <a href="{{route('admin.equipement')}}" class="nav-link">Gestion équipements</a></li>
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
