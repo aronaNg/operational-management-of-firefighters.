@@ -35,15 +35,12 @@ class VehiculeController extends Controller
             // Valider les données envoyées par le formulaire
             $validatedData = $request->validate([
                 'immatriculation' => 'required',
-                'disponible' => 'required',
-                'date_achat' => 'required',
                 'id_type_vehicule'=>'required',
             ]);
-
-              // Créer un nouveau ticket avec les données validées et enregistrer dans la base de données
-            Ticket::create([
+            $disponible = $request->has('disponible') ? true : false;
+              Vehicule::create([
                 'immatriculation' => $validatedData['immatriculation'],
-                'disponible' => $validatedData['disponible'],
+                'disponible' => $disponible,
                 'date_achat' => now(),
                 'id_type_vehicule' => $validatedData['id_type_vehicule'],
             ]);

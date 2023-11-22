@@ -11,6 +11,6 @@ class Vehicule extends Model
     protected $fillable = [ 'immatriculation', 'disponible','date_achat','id_type_vehicule'];
 
      public function typeVehicule(){
-        return $this->belongsTo(TypeVehicule::class);
+        return $this->belongsTo(TypeVehicule::class, 'id_type_vehicule');
     }
 }

@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('immatriculation');
             $table->boolean('disponible')
             ->default(true);
-            $table->date('date_achat')
+            $table->timestamp('date_achat')
+            ->default(DB::raw('CURRENT_TIMESTAMP'))
             ->nullable();
             $table->foreignId('id_type_vehicule')
             ->references('id')

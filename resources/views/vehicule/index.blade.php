@@ -29,9 +29,9 @@
                 <div class="card mb-4">
                     <div class="card-header"><strong>Immatriculation</strong> : {{ $vehicule->immatriculation }}</div>
                     <div class="card-body">
-                        <p>Disponible : {{ $vehicule->disponible }}</p>
+                        <p>Disponible : {{ $vehicule->disponible ? 'Oui' : 'Non' }}</p>
                         <p>Date achat : {{ $vehicule->date_achat }}</p>
-                        <p>Type véhicule : {{ $vehicule->id_type_vehicule }}</p>
+                        <p>Type véhicule : {{ $vehicule->typeVehicule->intitule }}</p>
                     </div>
                 </div>
             @endforeach
