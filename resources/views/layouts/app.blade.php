@@ -58,6 +58,10 @@
                         <a href="{{route('admin')}}" class="nav-link">Gestion véhicules</a></li>
                         <li class="nav-item"
                         >
+                        <a href="{{route('admin.incident')}}" class="nav-link">Gestion incidents</a></li>
+
+                        <li class="nav-item"
+                        >
                         <a href="#" class="nav-link">Gestion équipements</a></li>
 
                             <li class="nav-item dropdown">

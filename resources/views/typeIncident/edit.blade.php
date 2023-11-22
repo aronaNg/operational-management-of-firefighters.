@@ -3,7 +3,7 @@
 @section("content")
 <div class="container">
     <div class="my-3 p-3 bg-body rounded shadow-sm">
-        <h3 class="border-bottom pb-2 mb-4">Édition d'un type véhicule</h3>
+        <h3 class="border-bottom pb-2 mb-4">Édition d'un type incident</h3>
 
         <div class="mt-4">
 
@@ -17,18 +17,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            <form method="POST" action="{{route('admin.update', ['typeVehicule'=>$typeVehicule->id])}}">
+            <form method="POST" action="{{route('admin.incident.update', ['typeIncident'=>$typeIncident->id])}}">
                 @csrf
 
                 <input type="hidden" name="_method" value="put"/>
 
                 <div class="mb-3">
-                  <label for="intitule" class="form-label">Nom du type vehicule</label>
-                  <input type="text" class="form-control" id="intitule" name="intitule" value="{{$typeVehicule->intitule}}">
+                  <label for="intitule" class="form-label">Nom du type incident</label>
+                  <input type="text" class="form-control" id="intitule" name="intitule" value="{{$typeIncident->intitule}}">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Enregistrer</button>
-                <a href="{{route('admin')}}" class="btn btn-danger">Annuler</a>
+                <a href="{{route('admin.incident')}}" class="btn btn-danger">Annuler</a>
 
               </form>
         </div>

@@ -10,54 +10,54 @@ class TypeIncidentController extends Controller
     public function index()
     {
         // Code pour afficher la page d'accueil
-        $typeVehicules = TypeVehicule::orderBy("intitule","asc")->paginate(5);
-        return view("typeVehicule.index", compact("typeVehicules"));
+        $typeIncidents = TypeIncident::orderBy("intitule","asc")->paginate(5);
+        return view("typeIncident.index", compact("typeIncidents"));
     }
 
     //création de de type
     public function create()
     {
-        return view("typeVehicule.create");
+        return view("typeIncident.create");
     }
 
     public function store(Request $request)
     {
         // Valider les données envoyées par le formulaire
         $validatedData = $request->validate([
-            'intitule' => 'required|unique:type_vehicules,intitule', 
+            'intitule' => 'required|unique:type_incidents,intitule',
         ]);
 
         // Créer un nouveau type à partir des données validées
-        TypeVehicule::create($validatedData);
+        TypeIncident::create($validatedData);
 
-        // Rediriger l'utilisateur vers la page des typeVehicule avec un message de succès
+        // Rediriger l'utilisateur vers la page des typeIncident avec un message de succès
         return redirect()->route('admin')->with("success", "Le bien a été créé avec succès !");
     }
 
       //édition de bien
-    public function edit(TypeVehicule $typeVehicule)
+    public function edit(TypeIncident $typeIncident)
     {
-        return view("typeVehicule.edit",compact("typeVehicule"));
+        return view("typeIncident.edit",compact("typeIncident"));
     }
 
-    public function update(Request $request, TypeVehicule $typeVehicule)
+    public function update(Request $request, TypeIncident $typeIncident)
     {
-        $typeVehiculeEdit=$typeVehicule->intitule;
+        $typeIncidentEdit=$typeIncident->intitule;
         $validatedData = $request->validate([
-            'intitule' => 'required|unique:type_vehicules,intitule',
+            'intitule' => 'required|unique:type_incidents,intitule',
         ]);
 
-        $typeVehicule->update($validatedData);
+        $typeIncident->update($validatedData);
 
-        return redirect()->route('admin')->with("success", "Le typeVehicule  $typeVehiculeEdit a été modifié avec succès !");
+        return redirect()->route('admin')->with("success", "Le typeIncident  $typeIncidentEdit a été modifié avec succès !");
     }
 
-    //suppression de typeVehicule
+    //suppression de typeIncident
     //injection de dépendance
-      public function delete(TypeVehicule $typeVehicule)
+      public function delete(TypeIncident $typeIncident)
     {
-        $typeVehiculeSupp=$typeVehicule->intitule;
-        $typeVehicule->delete();
+        $typeIncidentSupp=$typeIncident->intitule;
+        $typeIncident->delete();
         return redirect()->route('admin')->with("message", "Le vehicule $typeVehiculeSupp a été supprimé avec succès !");
     }
 
