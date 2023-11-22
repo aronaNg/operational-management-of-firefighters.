@@ -15,7 +15,7 @@ class VehiculeController extends Controller
         public function index()
         {
             $vehicules = Vehicule::orderBy('date_achat', 'desc')->get();
-            return view("usager", compact("vehicules"));
+            return view("vehicule.index", compact("vehicules"));
         }
 
         /**

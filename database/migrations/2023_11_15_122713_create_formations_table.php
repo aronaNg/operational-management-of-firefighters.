@@ -11,18 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('disponibilite', function (Blueprint $table) {
+        Schema::create('formations', function (Blueprint $table) {
             $table->id();
-            $table->time('horaire_debut')
+            $table->string('nom');
+            $table->date('date_début')
             ->nullable();
-            $table->time('horaire_fin')
+            $table->date('date_fin')
             ->nullable();
-            $table
-            ->foreignId('id_pompier')
-            ->references('id')
-            ->on('pompier')
-            ->constrained();
             $table->timestamps();
+
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('disponibilite');
+        Schema::dropIfExists('formations');
     }
 };

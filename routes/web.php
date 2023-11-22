@@ -60,12 +60,12 @@ Route::put('/dashboard/equipements/{typeEquipement}', [TypeEquipementController:
 Route::delete('/equipements/{typeEquipement}', [TypeEquipementController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.equipement.delete");
 
 // VEHICULES
-Route::get('/dashboard/vehicules', [TypeVehiculeController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.vehicule");
-Route::get('/dashboard/vehicule/create', [TypeVehiculeController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.vehicule.create");
-Route::post('/dashboard/vehicule/create', [TypeVehiculeController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.vehicule.store");
-Route::get('/dashboard/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.vehicule.edit");
-Route::put('/dashboard/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.vehicule.update");
-Route::delete('/vehicule/{typeVehicule}', [TypeVehiculeController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.vehicule.delete");
+Route::get('/dashboard/vehicules', [VehiculeController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.vehicule");
+Route::get('/dashboard/vehicule/create', [VehiculeController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.vehicule.create");
+Route::post('/dashboard/vehicule/create', [VehiculeController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.vehicule.store");
+Route::get('/dashboard/vehicule/{typeVehicule}', [VehiculeController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.vehicule.edit");
+Route::put('/dashboard/vehicule/{typeVehicule}', [VehiculeController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.vehicule.update");
+Route::delete('/vehicule/{typeVehicule}', [VehiculeController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.vehicule.delete");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

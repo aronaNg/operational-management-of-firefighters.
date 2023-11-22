@@ -1,4 +1,4 @@
-@extends("layouts.base")
+@extends("layouts.app")
 
 @section("content")
 <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -36,5 +36,5 @@
             <a href="{{route('admin.vehicule')}}" class="btn btn-danger">Annuler</a>
         </form>
     </div>
-
+</div>
 @endsection

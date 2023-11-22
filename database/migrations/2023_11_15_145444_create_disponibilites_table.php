@@ -11,11 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pompier', function (Blueprint $table) {
+        Schema::create('disponibilites', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('adresse');
+            $table->time('horaire_debut')
+            ->nullable();
+            $table->time('horaire_fin')
+            ->nullable();
+            $table
+            ->foreignId('id_pompier')
+            ->references('id')
+            ->on('pompiers')
+            ->constrained();
             $table->timestamps();
         });
     }
@@ -25,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pompier');
+        Schema::dropIfExists('disponibilites');
     }
 };

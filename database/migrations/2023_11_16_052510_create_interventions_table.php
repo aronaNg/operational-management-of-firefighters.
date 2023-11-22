@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('intervention', function (Blueprint $table) {
+        Schema::create('interventions', function (Blueprint $table) {
             $table->id();
             $table->enum('statut', ['nouvelle', 'en cours','terminee'])
                 ->default('nouvelle');
@@ -20,28 +20,28 @@ return new class extends Migration
             $table
             ->foreignId('id_type_incident')
             ->references('id')
-            ->on('incident')
+            ->on('incidents')
             ->cascadeOnUpdate()
             ->constrained()
             ->onDelete('cascade');
             $table
             ->foreignId('id_pompier')
             ->references('id')
-            ->on('pompier')
+            ->on('pompiers')
             ->cascadeOnUpdate()
             ->constrained()
             ->onDelete('cascade');
             $table
             ->foreignId('id_vehicule')
             ->references('id')
-            ->on('vehicule')
+            ->on('vehicules')
             ->cascadeOnUpdate()
             ->constrained()
             ->onDelete('cascade');
             $table
             ->foreignId('id_equipement')
             ->references('id')
-            ->on('equipement')
+            ->on('equipements')
             ->cascadeOnUpdate()
             ->constrained()
             ->onDelete('cascade');
@@ -54,6 +54,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('intervention');
+        Schema::dropIfExists('interventions');
     }
 };
