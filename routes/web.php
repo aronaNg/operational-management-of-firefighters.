@@ -67,6 +67,14 @@ Route::get('/dashboard/vehicule/{typeVehicule}', [VehiculeController::class, 'ed
 Route::put('/dashboard/vehicule/{typeVehicule}', [VehiculeController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.vehicule.update");
 Route::delete('/vehicule/{typeVehicule}', [VehiculeController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.vehicule.delete");
 
+// POMPIERS
+Route::get('/dashboard/pompiers', [PompierController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.pompier");
+Route::get('/dashboard/pompier/create', [PompierController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.pompier.create");
+Route::post('/dashboard/pompier/create', [PompierController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.pompier.store");
+Route::get('/dashboard/pompier/{pompier}', [PompierController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.pompier.edit");
+Route::put('/dashboard/pompier/{pompier}', [PompierController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.pompier.update");
+Route::delete('/pompier/{pompier}', [PompierController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.pompier.delete");
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

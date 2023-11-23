@@ -14,7 +14,6 @@
             </div>
            @endif
 
-          {{--alert pour la cloture de ticket--}}
           @if(session()->has("error"))
           <div class="alert alert-danger alert-dismissible fade show" role="alert"">
               {{session()->get("error")}}

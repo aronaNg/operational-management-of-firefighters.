@@ -24,7 +24,7 @@
                     <input type="text" class="form-control" id="immatriculation" name="immatriculation" required>
 
                     <label for="disponible" class="form-label">Disponible :</label>
-                    <input type="checkbox" id="disponible" name="disponible" checked> 
+                    <input type="checkbox" id="disponible" name="disponible" checked> <br>
 
 
                     <label for="typeVehicule" class="form-label">Liste des typeVehicules :</label>

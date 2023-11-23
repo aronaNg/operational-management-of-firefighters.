@@ -7,59 +7,62 @@ use Illuminate\Http\Request;
 
 class PompierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        // Code pour afficher la page d'accueil
+        $pompiers = Pompier::orderBy("nom","asc")->paginate(5);
+        return view("pompier.index", compact("pompiers"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    //création de de type
     public function create()
     {
-        //
+        return view("pompier.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // Valider les données envoyées par le formulaire
+        $validatedData = $request->validate([
+            'nom' => 'required:pompiers,nom',
+            'prenom' => 'required:pompiers,prenom',
+            'adresse' => 'required:pompiers,adresse ',
+        ]);
+
+        // Créer un nouveau pompier à partir des données validées
+        Pompier::create($validatedData);
+
+        // Rediriger l'utilisateur vers la page des pompier avec un message de succès
+        return redirect()->route('admin.pompier')->with("success", "Le pompier a été créé avec succès !");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Pompier $pompier)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+      //édition de bien
     public function edit(Pompier $pompier)
     {
-        //
+        return view("pompier.edit",compact("pompier"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Pompier $pompier)
     {
-        //
+        $pompierEdit=$pompier->intitule;
+        $validatedData = $request->validate([
+            'nom' => 'required:pompiers,nom',
+            'prenom' => 'required:pompiers,prenom',
+            'adresse' => 'required:pompiers,adresse ',
+        ]);
+
+        $pompier->update($validatedData);
+
+        return redirect()->route('admin.pompier')->with("success", "Le type $pompierEdit a été modifié avec succès !");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pompier $pompier)
+    //suppression de pompier
+    //injection de dépendance
+      public function delete(Pompier $pompier)
     {
-        //
+        $pompierSupp=$pompier->intitule;
+        $pompier->delete();
+        return redirect()->route('admin.pompier')->with("message", "Le type $pompierSupp a été supprimé avec succès !");
     }
+
 }

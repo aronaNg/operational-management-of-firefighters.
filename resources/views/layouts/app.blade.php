@@ -52,7 +52,7 @@
                         @else
                         <li class="nav-item"
                         >
-                        <a href="#" class="nav-link">Gestion pompiers</a></li>
+                        <a href="{{route('admin.pompier')}}" class="nav-link">Gestion pompiers</a></li>
                         <li class="nav-item"
                         >
                         <a href="{{route('admin')}}" class="nav-link">Gestion véhicules</a></li>

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Pompier extends Model
 {
     use HasFactory;
+    protected $fillable = [ 'nom', 'prenom','adresse'];
 }
