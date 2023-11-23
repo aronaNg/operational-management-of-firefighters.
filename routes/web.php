@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TypeVehiculeController;
 use App\Http\Controllers\TypeIncidentController;
 use App\Http\Controllers\TypeEquipementController;
+use App\Http\Controllers\EquipementController;
 use App\Http\Controllers\VehiculeController;
 use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\InterventionController;
@@ -52,12 +53,12 @@ Route::put('/dashboard/incidents/{typeIncident}', [TypeIncidentController::class
 Route::delete('/incidents/{typeIncident}', [TypeIncidentController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.incident.delete");
 
 //EQUIPEMENTS
-Route::get('/dashboard/equipements', [TypeEquipementController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.equipement");
-Route::get('/dashboard/equipements/create', [TypeEquipementController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.equipement.create");
-Route::post('/dashboard/equipements/create', [TypeEquipementController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.equipement.store");
-Route::get('/dashboard/equipements/{typeEquipement}', [TypeEquipementController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.equipement.edit");
-Route::put('/dashboard/equipements/{typeEquipement}', [TypeEquipementController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.equipement.update");
-Route::delete('/equipements/{typeEquipement}', [TypeEquipementController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.equipement.delete");
+Route::get('/dashboard/typeEquipements', [TypeEquipementController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.equipement");
+Route::get('/dashboard/typeEquipement/create', [TypeEquipementController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.equipement.create");
+Route::post('/dashboard/typeEquipement/create', [TypeEquipementController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.equipement.store");
+Route::get('/dashboard/typeEquipement/{typeEquipement}', [TypeEquipementController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.equipement.edit");
+Route::put('/dashboard/typeEquipement/{typeEquipement}', [TypeEquipementController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.equipement.update");
+Route::delete('/typeEquipement/{typeEquipement}', [TypeEquipementController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.equipement.delete");
 
 // VEHICULES
 Route::get('/dashboard/vehicules', [VehiculeController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.vehicule");
@@ -74,6 +75,14 @@ Route::post('/dashboard/pompier/create', [PompierController::class, 'store'])->m
 Route::get('/dashboard/pompier/{pompier}', [PompierController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.pompier.edit");
 Route::put('/dashboard/pompier/{pompier}', [PompierController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.pompier.update");
 Route::delete('/pompier/{pompier}', [PompierController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.pompier.delete");
+
+// Equipements
+Route::get('/dashboard/equipements', [EquipementController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.equipementprim");
+Route::get('/dashboard/equipement/create', [EquipementController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.equipementprim.create");
+Route::post('/dashboard/equipement/create', [EquipementController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.equipementprim.store");
+Route::get('/dashboard/equipement/{equipement}', [EquipementController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.equipementprim.edit");
+Route::put('/dashboard/equipement/{equipement}', [EquipementController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.equipementprim.update");
+Route::delete('/equipement/{equipement}', [EquipementController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.equipementprim.delete");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('equipements', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
             $table->boolean('disponible')
             ->default(true);
             $table->foreignId('id_type_equipement')
@@ -21,7 +22,8 @@ return new class extends Migration
                 ->cascadeOnUpdate()
                 ->constrained()
                 ->onDelete('cascade');
-            $table->date('date_achat')
+            $table->timestamp('date_achat')
+            ->default(DB::raw('CURRENT_TIMESTAMP'))
             ->nullable();
             $table->timestamps();
         });

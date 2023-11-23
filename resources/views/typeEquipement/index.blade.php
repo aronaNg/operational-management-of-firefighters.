@@ -26,7 +26,7 @@
                 <a href="{{route('admin.equipement.create')}}" class="btn btn-success mb-4">Créer un type d'équipement</a>
             </div>
             <div class="d-flex justify-content-start">
-                <a href="" class="btn btn-success mb-4">Voir les équipements</a>
+                <a href="{{route('admin.equipementprim')}}" class="btn btn-success mb-4">Voir les équipements</a>
             </div>
           </div>
             <table class="table table-striped table-hover table-bordered"">
