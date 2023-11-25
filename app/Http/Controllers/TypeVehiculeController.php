@@ -9,7 +9,7 @@ class TypeVehiculeController extends Controller
     public function index()
     {
         // Code pour afficher la page d'accueil
-        $typeVehicules = TypeVehicule::orderBy("intitule","asc")->paginate(5);
+        $typeVehicules = TypeVehicule::orderBy("intitule","asc")->paginate(100);
         return view("typeVehicule.index", compact("typeVehicules"));
     }
 
