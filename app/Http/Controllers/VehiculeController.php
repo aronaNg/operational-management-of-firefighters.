@@ -14,7 +14,7 @@ class VehiculeController extends Controller
          */
         public function index()
         {
-            $vehicules = Vehicule::orderBy('date_achat', 'desc')->get();
+            $vehicules = Vehicule::orderBy('date_achat', 'desc')->paginate(100);
             return view("vehicule.index", compact("vehicules"));
         }
 

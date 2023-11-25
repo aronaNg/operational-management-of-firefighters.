@@ -29,7 +29,8 @@
                     <div class="card-header"><strong>Immatriculation</strong> : {{ $equipement->nom }}</div>
                     <div class="card-body">
                         <p>Disponible : {{ $equipement->disponible ? 'Oui' : 'Non' }}</p>
-                        <p>Date achat : {{ $equipement->date_achat }}</p>
+                        <p>Date achat: {{ \Carbon\Carbon::parse($equipement->date_achat)->format('d-m-Y') }}</p>
+
                         <p>Type équipement : {{ $equipement->typeEquipement->intitule }}</p>
                     </div>
                 </div>

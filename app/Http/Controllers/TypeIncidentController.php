@@ -10,7 +10,7 @@ class TypeIncidentController extends Controller
     public function index()
     {
         // Code pour afficher la page d'accueil
-        $typeIncidents = TypeIncident::orderBy("intitule","asc")->paginate(5);
+        $typeIncidents = TypeIncident::orderBy("intitule","asc")->paginate(100);
         return view("typeIncident.index", compact("typeIncidents"));
     }
 

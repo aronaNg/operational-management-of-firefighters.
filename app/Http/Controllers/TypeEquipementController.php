@@ -10,7 +10,7 @@ class TypeEquipementController extends Controller
     public function index()
     {
         // Code pour afficher la page d'accueil
-        $typeEquipements = TypeEquipement::orderBy("intitule","asc")->paginate(5);
+        $typeEquipements = TypeEquipement::orderBy("intitule","asc")->paginate(100);
         return view("typeEquipement.index", compact("typeEquipements"));
     }
 

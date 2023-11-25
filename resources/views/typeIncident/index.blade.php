@@ -29,7 +29,7 @@
                 <a href="" class="btn btn-success mb-4">Voir les incidents</a>
             </div>
           </div>
-            <table class="table table-striped table-hover table-bordered"">
+            <table class="table table-striped table-hover table-bordered" id="myTable">
                 <thead>
                   <tr>
                     <th scope="col">No index</th>
