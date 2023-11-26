@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('table_historiqueinci', function (Blueprint $table) {
             $table->id();
             $table->string('intitule')->unique();
-            $table->timestamps();
+            $table->timestamp('date_archivage')
+            ->default(DB::raw('CURRENT_TIMESTAMP'))
+            ->nullable();
         });
     }
 
