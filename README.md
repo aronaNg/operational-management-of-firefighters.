@@ -2,7 +2,9 @@
 
 Link: https://github.com/aronaNg/operational-management-of-firefighters
 
-git clone https://github.com/aronaNg/operational-management-of-firefighters.git
+git clone https://github.com/aronaNg/operational-management-of-firefighters..git
+
+For Windows, make sure to change the directory name (because of .. in the git repo)
 
 composer install
 npm install
