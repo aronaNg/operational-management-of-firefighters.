@@ -15,7 +15,7 @@ class PompierController extends Controller
     {
         // Code pour afficher la page d'accueil
         $pompiers = Pompier::with('disponibilites', 'competences', 'certifications')->get();
-        return view("user", compact("pompiers"));
+        return view("pompier.user", compact("pompiers"));
     }
 
     //création de de type
