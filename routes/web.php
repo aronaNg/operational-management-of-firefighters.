@@ -11,7 +11,10 @@ use App\Http\Controllers\IncidentController;
 use App\Http\Controllers\InterventionController;
 use App\Http\Controllers\FormationController;
 use App\Http\Controllers\CertificatController;
-use App\Http\Controllers\PompierController;
+use App\Http\Controllers\PompierController;use
+ App\Http\Controllers\UsersManagementController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -89,6 +92,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// // users
+// Route::get('/users', [UsersManagementController::class, 'index'])->middleware(['web', 'auth'])->name("users");
+// Route::post('/users', [UsersManagementController::class, 'store'])->middleware(['web', 'auth'])->name("users.store");
+// Route::get('/users/create', [UsersManagementController::class, 'create'])->middleware(['web', 'auth'])->name("users.create");
+// Route::get('/users/{user}', [UsersManagementController::class, 'show'])->middleware(['web', 'auth'])->name("users.show");
+// Route::get('/users/{user}/edit', [UsersManagementController::class, 'edit'])->middleware(['web', 'auth'])->name("users.edit");
+// Route::put('/users/{user}', [UsersManagementController::class, 'update'])->middleware(['web', 'auth'])->name("users.update");
+// Route::delete('/users/{user}', [UsersManagementController::class, 'delete'])->middleware(['web', 'auth']) ->name("users.destroy");
+
 
 require __DIR__.'/auth.php';
 
