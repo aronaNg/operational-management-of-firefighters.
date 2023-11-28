@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('adresse');
+            $table->string('competences')->nullable();
+            $table->string('certifications')->nullable();
             $table->timestamps();
         });
     }

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pompier;
+use App\Models\Disponibilite;
+use App\Models\Competence;
+use App\Models\Certification;
+
 use Illuminate\Http\Request;
 
 class PompierController extends Controller
@@ -10,30 +14,41 @@ class PompierController extends Controller
     public function index()
     {
         // Code pour afficher la page d'accueil
-        $pompiers = Pompier::orderBy("nom","asc")->paginate(5);
-        return view("pompier.index", compact("pompiers"));
+        $pompiers = Pompier::with('disponibilites', 'competences', 'certifications')->get();
+        return view("user", compact("pompiers"));
     }
 
     //création de de type
     public function create()
     {
-        return view("pompier.create");
+        // Récupérer toutes les disponibilités, compétences et certifications pour les formulaires
+        $disponibilites = Disponibilite::all();
+        $competences = Competence::all();
+        $certifications = Certification::all();
+
+        // Retourner la vue pour créer un pompier
+        return view('pompier.create', compact('disponibilites', 'competences', 'certifications'));
     }
 
     public function store(Request $request)
     {
-        // Valider les données envoyées par le formulaire
-        $validatedData = $request->validate([
-            'nom' => 'required:pompiers,nom',
-            'prenom' => 'required:pompiers,prenom',
-            'adresse' => 'required:pompiers,adresse ',
+        // Valider les données du formulaire
+        $request->validate([
+            'nom' => 'required',
+            'prenom' => 'required',
+            'adresse' => 'required',
         ]);
 
-        // Créer un nouveau pompier à partir des données validées
-        Pompier::create($validatedData);
+        // Créer un nouveau pompier avec les données du formulaire
+        $pompier = Pompier::create($request->only(['nom', 'prenom','adresse']));
 
-        // Rediriger l'utilisateur vers la page des pompier avec un message de succès
-        return redirect()->route('admin.pompier')->with("success", "Le pompier a été créé avec succès !");
+        // Attacher les disponibilités, compétences et certifications au pompier
+        $pompier->disponibilites()->attach($request->input('disponibilites'));
+        $pompier->competences()->attach($request->input('competences'));
+        $pompier->certifications()->attach($request->input('certifications'));
+
+        // Rediriger vers la liste des pompiers avec un message de succès
+        return redirect()->route('admin.pompier')->with('success', 'Pompier ajouté avec succès');
     }
 
       //édition de bien
