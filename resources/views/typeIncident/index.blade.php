@@ -26,7 +26,7 @@
                 <a href="{{route('admin.incident.create')}}" class="btn btn-success mb-4">Créer un type d'incident</a>
             </div>
             <div class="d-flex justify-content-start">
-                <a href="" class="btn btn-success mb-4">Voir les incidents</a>
+                <a href="{{route('admin.incidentprim')}}" class="btn btn-success mb-4">Voir les incidents</a>
             </div>
           </div>
             <table class="table table-striped table-hover table-bordered" id="myTable">

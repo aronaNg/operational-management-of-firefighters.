@@ -48,12 +48,12 @@ Route::delete('/typeVehicule/{typeVehicule}', [TypeVehiculeController::class, 'd
 
 // INCIDENTS
 
-Route::get('/dashboard/incidents', [TypeIncidentController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.incident");
-Route::get('/dashboard/incidents/create', [TypeIncidentController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.incident.create");
-Route::post('/dashboard/incidents/create', [TypeIncidentController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.incident.store");
-Route::get('/dashboard/incidents/{typeIncident}', [TypeIncidentController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.incident.edit");
-Route::put('/dashboard/incidents/{typeIncident}', [TypeIncidentController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.incident.update");
-Route::delete('/incidents/{typeIncident}', [TypeIncidentController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.incident.delete");
+Route::get('/dashboard/typeIncident', [TypeIncidentController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.incident");
+Route::get('/dashboard/typeIncident/create', [TypeIncidentController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.incident.create");
+Route::post('/dashboard/typeIncident/create', [TypeIncidentController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.incident.store");
+Route::get('/dashboard/typeIncident/{typeIncident}', [TypeIncidentController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.incident.edit");
+Route::put('/dashboard/typeIncident/{typeIncident}', [TypeIncidentController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.incident.update");
+Route::delete('/typeIncident/{typeIncident}', [TypeIncidentController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.incident.delete");
 
 //EQUIPEMENTS
 Route::get('/dashboard/typeEquipements', [TypeEquipementController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.equipement");
@@ -67,9 +67,14 @@ Route::delete('/typeEquipement/{typeEquipement}', [TypeEquipementController::cla
 Route::get('/dashboard/vehicules', [VehiculeController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.vehicule");
 Route::get('/dashboard/vehicule/create', [VehiculeController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.vehicule.create");
 Route::post('/dashboard/vehicule/create', [VehiculeController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.vehicule.store");
-Route::get('/dashboard/vehicule/{typeVehicule}', [VehiculeController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.vehicule.edit");
-Route::put('/dashboard/vehicule/{typeVehicule}', [VehiculeController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.vehicule.update");
-Route::delete('/vehicule/{typeVehicule}', [VehiculeController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.vehicule.delete");
+// Route::get('/dashboard/vehicule/{typeVehicule}', [VehiculeController::class, 'edit'])->middleware(['auth', 'verified'])->name("admin.vehicule.edit");
+// Route::put('/dashboard/vehicule/{typeVehicule}', [VehiculeController::class, 'update'])->middleware(['auth', 'verified'])->name("admin.vehicule.update");
+// Route::delete('/vehicule/{typeVehicule}', [VehiculeController::class, 'delete'])->middleware(['auth', 'verified']) ->name("admin.vehicule.delete");
+
+// Incidents
+Route::get('/dashboard/incidents', [IncidentController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.incidentprim");
+Route::get('/dashboard/incident/create', [IncidentController::class, 'create'])->middleware(['auth', 'verified'])->name("admin.incidentprim.create");
+Route::post('/dashboard/incident/create', [IncidentController::class, 'store'])->middleware(['auth', 'verified'])->name("admin.incidentprim.store");
 
 // POMPIERS
 Route::get('/dashboard/pompiers', [PompierController::class, 'index'])->middleware(['auth', 'verified'])->name("admin.pompier");

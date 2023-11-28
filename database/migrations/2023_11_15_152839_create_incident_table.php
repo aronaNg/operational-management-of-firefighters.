@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('incidents', function (Blueprint $table) {
             $table->id();
+            $table->string('ville');
             $table->timestamp('date_heure')
                 ->nullable();
             $table

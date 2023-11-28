@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Incident;
 use Illuminate\Http\Request;
+use App\Models\TypeIncident;
 
 class IncidentController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $incidents = Incident::orderBy('date_heure', 'desc')->paginate(100);
+        return view("incident.index", compact("incidents"));
     }
 
     /**
@@ -20,7 +24,8 @@ class IncidentController extends Controller
      */
     public function create()
     {
-        //
+        $typeIncidents=TypeIncident::all();
+        return view('incident.create',compact("typeIncidents"));
     }
 
     /**
@@ -28,38 +33,19 @@ class IncidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Valider les données envoyées par le formulaire
+        $validatedData = $request->validate([
+            'ville' => 'required',
+            'id_type_incident'=>'required',
+        ]);
+        Incident::create([
+            'ville' => $validatedData['ville'],
+            'date_heure' => now(),
+            'id_type_incident' => $validatedData['id_type_incident'],
+        ]);
+
+        return redirect()->route('admin.incidentprim')->with('success', 'L incident a été créé avec succès.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Incidenet $incidenet)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Incidenet $incidenet)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Incidenet $incidenet)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Incidenet $incidenet)
-    {
-        //
-    }
 }

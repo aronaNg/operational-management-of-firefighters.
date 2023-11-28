@@ -5,9 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-                <h1>C'est la page admin </h1>
-
+                <div class="card-header">C'est la page admin</div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -15,7 +13,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    Vous êtes connectés !
                 </div>
             </div>
         </div>
