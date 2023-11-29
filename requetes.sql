@@ -27,14 +27,14 @@
 
 -- historisation pour la table type equipement
 
--- DELIMITER $$
+DELIMITER $$
 
--- CREATE TRIGGER trig_archiveequip
--- AFTER DELETE ON type_equipements
--- FOR EACH ROW
--- BEGIN
---     INSERT INTO table_historiqueequip (id, intitule)
---     VALUES (OLD.id, OLD.intitule);
--- END$$
+CREATE TRIGGER trig_archiveequip
+AFTER DELETE ON type_equipements
+FOR EACH ROW
+BEGIN
+    INSERT INTO table_historiqueequip (id, intitule)
+    VALUES (OLD.id, OLD.intitule);
+END$$
 
--- DELIMITER ;
+DELIMITER ;
