@@ -26,3 +26,4 @@ In two different terminals, run
 
 🔨 npm run dev
 
+🚨 Small error, the user who registers for the first time with the value is_admin=0, must be directed to the login page for the first time. But he is directed to the admin page, on the other hand if he logs out and reconnects it will be in the users page. I belatedly saw the route name while trying to customize the laravel middleware.
