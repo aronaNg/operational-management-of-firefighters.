@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class DisponibiliteSeeder extends Seeder
+class IncidentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class DisponibiliteSeeder extends Seeder
     public function run(): void
     {
         //
-        \App\Models\Disponibilite::factory(20)->create();
+        \App\Models\Incident::factory(20)->create();
     }
 }
